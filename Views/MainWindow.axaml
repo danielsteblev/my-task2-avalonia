@@ -1,0 +1,175 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AnimalSimulation.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        d:DesignWidth="900" 
+        d:DesignHeight="650"
+        x:Class="AnimalSimulation.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Animal Simulator"
+        FontFamily="Segoe UI"
+        Background="#F5F5F5">
+
+    <Grid RowDefinitions="Auto,*,Auto" Margin="10" ColumnDefinitions="*">
+
+        <!-- Animals Panel -->
+        <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Margin="0,0,0,15">
+            <!-- Dog Card -->
+            <Border Grid.Column="0" 
+                    Background="White" 
+                    CornerRadius="5" 
+                    BorderBrush="#DDDDDD" 
+                    BorderThickness="1"
+                    Margin="5"
+                    BoxShadow="2 2 5 0 #11000000">
+                <StackPanel Margin="15" Spacing="10">
+                    <TextBlock Text="🐶 Собака" 
+                               FontSize="18" 
+                               FontWeight="Bold"
+                               Margin="0,0,0,10"/>
+                    
+                    <Button Content="Двигаться" 
+                            Command="{Binding DogMoveCommand}"
+                            Classes="PrimaryButton"/>
+                    <Button Content="Стоять" 
+                            Command="{Binding DogStandCommand}"
+                            Classes="SecondaryButton"/>
+                    <Button Content="Голос" 
+                            Command="{Binding DogVoiceCommand}"
+                            Classes="AccentButton"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Panther Card -->
+            <Border Grid.Column="1" 
+                    Background="White" 
+                    CornerRadius="5" 
+                    BorderBrush="#DDDDDD" 
+                    BorderThickness="1"
+                    Margin="5"
+                    BoxShadow="2 2 5 0 #11000000">
+                <StackPanel Margin="15" Spacing="10">
+                    <TextBlock Text="🐆 Пантера" 
+                               FontSize="18" 
+                               FontWeight="Bold"
+                               Margin="0,0,0,10"/>
+                    
+                    <Button Content="Двигаться" 
+                            Command="{Binding PantherMoveCommand}"
+                            Classes="PrimaryButton"/>
+                    <Button Content="Стоять" 
+                            Command="{Binding PantherStandCommand}"
+                            Classes="SecondaryButton"/>
+                    <Button Content="Голос" 
+                            Command="{Binding PantherVoiceCommand}"
+                            Classes="AccentButton"/>
+                    <Button Content="Залезть на дерево" 
+                            Command="{Binding PantherClimbTreeCommand}"
+                            Classes="SuccessButton"/>
+                    <Button Content="Спуститься с дерева" 
+                            Command="{Binding PantherGetDownCommand}"
+                            Classes="WarningButton"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Turtle Card -->
+            <Border Grid.Column="2" 
+                    Background="White" 
+                    CornerRadius="5" 
+                    BorderBrush="#DDDDDD" 
+                    BorderThickness="1"
+                    Margin="5"
+                    BoxShadow="2 2 5 0 #11000000">
+                <StackPanel Margin="15" Spacing="10">
+                    <TextBlock Text="🐢 Черепаха" 
+                               FontSize="18" 
+                               FontWeight="Bold"
+                               Margin="0,0,0,10"/>
+                    
+                    <Button Content="Двигаться" 
+                            Command="{Binding TurtleMoveCommand}"
+                            Classes="PrimaryButton"/>
+                    <Button Content="Стоять" 
+                            Command="{Binding TurtleStandCommand}"
+                            Classes="SecondaryButton"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Event Log -->
+        <Border Grid.Row="2" 
+                Background="White" 
+                CornerRadius="5" 
+                BorderBrush="#DDDDDD" 
+                BorderThickness="1"
+                BoxShadow="2 2 5 0 #11000000">
+            <Grid RowDefinitions="Auto,*" Margin="10">
+                <TextBlock Grid.Row="0" 
+                          Text="📝 Журнал событий" 
+                          FontSize="16" 
+                          FontWeight="Bold"
+                          Margin="0,0,0,10"/>
+                
+                <Border Grid.Row="1" 
+                        BorderBrush="#4DA6FF" 
+                        BorderThickness="1" 
+                        CornerRadius="3"
+                        Padding="5">
+                    <ListBox ItemsSource="{Binding LogMessages}" 
+                             Background="Transparent"
+                             BorderThickness="0"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto"
+                             MaxHeight="200">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" 
+                                           Margin="5,2"
+                                           TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+
+    <Window.Styles>
+        <Style Selector="Button.PrimaryButton">
+            <Setter Property="Background" Value="#4DA6FF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="CornerRadius" Value="3"/>
+        </Style>
+        
+        <Style Selector="Button.SecondaryButton">
+            <Setter Property="Background" Value="#F0F0F0"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="CornerRadius" Value="3"/>
+        </Style>
+        
+        <Style Selector="Button.AccentButton">
+            <Setter Property="Background" Value="#FF7043"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="CornerRadius" Value="3"/>
+        </Style>
+        
+        <Style Selector="Button.SuccessButton">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="CornerRadius" Value="3"/>
+        </Style>
+        
+        <Style Selector="Button.WarningButton">
+            <Setter Property="Background" Value="#FF9800"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="CornerRadius" Value="3"/>
+        </Style>
+    </Window.Styles>
+</Window>

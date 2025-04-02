@@ -1,0 +1,77 @@
+## Общие файлы IDE и ОС ##
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.ide/
+.vs/
+.idea/
+.DS_Store
+*.swp
+*.swo
+Thumbs.db
+
+## Файлы сборки .NET ##
+bin/
+obj/
+[Bb]uild/
+[Bb]uildArtifacts/
+TestResults/
+[Tt]est[Rr]esult*/
+*.cache
+*.log
+*.nupkg
+*.pdb
+*.ilk
+*.tmp
+*.TMP
+
+## Avalonia специфичные файлы ##
+/build/
+/packages/
+/artifacts/
+*.avalondock
+*.aaxaml
+*.axaml.bin
+*.axaml.compiled
+*.axaml.g.cs
+
+## Файлы публикации ##
+/publish/
+/app.publish/
+*.pubxml
+
+## Настройки редакторов ##
+.vscode/
+*.code-workspace
+*.dotSettings
+
+## Файлы зависимостей ##
+packages/
+[Nn]u[Gg]et/
+*.nupkg
+.nuget/
+
+## Файлы тестирования ##
+*.coverage
+*.coveragexml
+*.jfm
+
+## Локальные настройки ##
+appsettings.local.json
+launchSettings.json
+local.settings.json
+
+## Временные файлы ##
+~$*
+*.~*
+*.tmp
+*.temp
+
+## Исключения (если нужно сохранить) ##
+!*.axaml
+!*.cs
+!*.sln
+!*.csproj
+!*.gitignore
+!*.gitattributes
